@@ -53,10 +53,18 @@ class Turn
         player2.deck.cards.shift(3)
       end
     elsif type == :mutually_assured_destruction
+      if player1.deck.cards.length <= 3
+        player1.deck.cards.shift(player1.deck.cards.length)
+        game.continue_playing
+      elsif player2.deck.cards.length <= 3
+        player2.deck.cards.shift(player2.deck.cards.length)
+        game.continue_playing
+      else
         player1.deck.cards.shift(3)
         player2.deck.cards.shift(3)
       end
     end
+  end
 
     def award_spoils(winner)
       @spoils_of_war.each do |spoil|
