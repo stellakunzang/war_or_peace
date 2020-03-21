@@ -5,11 +5,6 @@ class Deck
     @cards = cards
   end
 
-  # def rank_exists?
-  #   if @cards[index] == nil
-  #     @deck.cards = []
-  #   end
-
   def rank_of_card_at(index)
     if @cards[index] == nil
       @cards = []
