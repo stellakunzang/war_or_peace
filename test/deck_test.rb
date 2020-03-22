@@ -77,7 +77,18 @@ class DeckTest < Minitest::Test
       cards = [card1, card2, card3]
       deck = Deck.new(cards)
 
-      assert_equal card1, deck.remove_card
+      assert_equal [card1], deck.remove_card
+    end
+
+    def test_it_can_remove_multiple_cards
+      card1 = Card.new(:diamond, 'Queen', 12)
+      card2 = Card.new(:spade, '3', 3)
+      card3 = Card.new(:heart, 'Ace', 14)
+      cards = [card1, card2, card3]
+      deck = Deck.new(cards)
+      deck.remove_card(2)
+
+      assert_equal [card3], deck.cards
     end
 
     def test_it_can_update_high_cards_array
@@ -101,6 +112,16 @@ class DeckTest < Minitest::Test
       card4 = Card.new(:club, '5', 5)
 
       assert_equal [card1, card2, card3, card4], deck.add_card(card4)
+    end
+
+    def test_it_can_count_cards
+      card1 = Card.new(:diamond, 'Queen', 12)
+      card2 = Card.new(:spade, '3', 3)
+      card3 = Card.new(:heart, 'Ace', 14)
+      cards = [card1, card2, card3]
+      deck = Deck.new(cards)
+
+      assert_equal 3, deck.count_cards 
     end
 
 end
