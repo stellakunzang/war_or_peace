@@ -7,7 +7,7 @@ class Deck
 
   def rank_of_card_at(index)
     if @cards[index] == nil
-      @cards = []
+      rank = 0
     else
       @cards[index].rank
     end
@@ -27,12 +27,15 @@ class Deck
     (( high_ranking_cards.length.to_f / @cards.length.to_f) * 100.00).round(2)
   end
 
-  def remove_card
-    @cards.shift
+  def remove_card(number = 1)
+    @cards.shift(number)
   end
 
   def add_card(card)
     @cards << card
   end
 
+  def count_cards
+    @cards.length
+  end
 end
